@@ -23,7 +23,7 @@
                             <br>
                             <select class="custom-select form-control" id="payments_method" name="payments_method">
                                 <?php foreach($payment_methods as $row){ ?>
-                                    <option value="<?php echo $row->id;?>"> <?php echo $row->id; ?></option>
+                                    <option value="<?= $row->id; ?>" <?= ($item->payments_method == $row->id) ? 'selected' : '' ?>> <?= $row->title; ?></option>
                                 <?php }?>
                             </select>
                         </div>
@@ -32,7 +32,7 @@
                             <br>
                             <select class="custom-select form-control" id="delivery_method" name="delivery_method">
                                 <?php foreach($delivery_methods as $row){ ?>
-                                    <option value="<?php echo $row->id;?>"> <?php echo $row->id; ?></option>
+                                    <option value="<?= $row->id; ?>" <?= ($item->delivery_method == $row->id) ? 'selected' : '' ?>> <?= $row->title; ?></option>
                                 <?php }?>
                             </select>
                         </div>
@@ -47,11 +47,12 @@
                             <?php echo form_error('payment_json'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="Status">Status</label>
+                            <label for="Status">Status ID</label>
                             <br>
-                            <select class="custom-select form-control" id="Status" name="status">
-                                <option value="0" <?php echo  ($item->status == 0) ? 'selected' : ''  ?>>Non-Active</option>
-                                <option value="1" <?php echo ($item->status == 1) ? 'selected' : ''  ?>>Active</option>
+                            <select class="custom-select form-control" id="status_id" name="status_id">
+                                <?php foreach($order_status as $row){ ?>
+                                    <option value="<?= $row->id; ?>" <?= ($item->status_id == $row->id) ? 'selected' : '' ?>> <?= $row->title; ?></option>
+                                <?php }?>
                             </select>
                         </div>
                     </div>

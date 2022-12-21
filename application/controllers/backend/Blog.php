@@ -74,77 +74,90 @@ class Blog extends CI_Controller {
 
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-        if($this->input->post()){
+        $unlink = 0;
+
+        if ($this->input->post()) {
             $id = $this->security->xss_clean($id);
 
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('title', 'title', 'required');
             $this->form_validation->set_rules('description', 'description', 'required');
-            $this->form_validation->set_rules('image', 'image', 'required');
             $this->form_validation->set_rules('content', 'content', 'required');
 
-            $old_filename = $this->create()->image;
-            $new_filename = $this->security->xss_clean($this->input->post('image'));
-            if($new_filename == TRUE)
-            {
-                $update_filename = time()."-".str_replace('','-', $new_filename);
-                $config['upload_path'] = 'uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = 6000;
-                $config['max_width'] = 1024;
-                $config['max_height'] = 768;
-                $this->load->library('upload', $config);
+            if ($this->form_validation->run()) {
 
-                if ($this->upload->do_upload('image')) {
-                    if (file_exists("./uploads/" . $old_filename)) {
-                        unlink("./uploads/" . $old_filename);
+
+                $request_data = [
+                    'title' => $this->security->xss_clean($this->input->post('title')),
+                    'description' => $this->security->xss_clean($this->input->post('description')),
+                    'content' => $this->security->xss_clean($this->input->post('content')),
+                    'status' => $this->security->xss_clean($this->input->post('status'))
+                ];
+                //print_r($request_data); exit();
+
+                if ($_FILES["image"]["tmp_name"]) {
+
+                    $config['upload_path'] = 'uploads/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['overwrite'] = 'false';
+
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('image')) {
+
+                        $error = array('error' => $this->upload->display_errors());
+                        $this->session->set_flashdata('error_message', $error);
+
+                    } else {
+
+                        $file_data = $this->upload->data();
+                        $request_data['image'] = $file_data['file_name'];
+                        $unlink++;
                     }
                 }
-            } else {
-                $update_filename = $old_filename;
+
+
+                $img = $this->input->post('image');
+
+                $affected_rows = $this->blog_md->update($id, $request_data);
+
+                if ($affected_rows > 0) {
+                    $this->session->set_flashdata('success_message', 'Məlumat uğurla dəyişdirildi');
+
+                    if ($unlink > 0 and file_exists($img)) {
+                        unlink($img);
+                    }
+
+                    redirect('backend/blog/edit/' . $id);
+                } else {
+                    $this->session->set_flashdata('error_message', 'Dəyişdirmə uğursuz oldu');
+                    redirect('backend/blog/edit/' . $id);
+                }
             }
-            if ($this->form_validation->run() == FALSE){
-                $this->load->admin('blog/edit');
-            }
-            $data_upload_files = $this->upload->data();
-            $image = $data_upload_files['file_name'];
-
-            $request_data = [
-                'title' => $this->security->xss_clean($this->input->post('title')),
-                'description' => $this->security->xss_clean($this->input->post('description')),
-                'image' => $image,
-                'content' => $this->security->xss_clean($this->input->post('content')),
-                'status' => $this->security->xss_clean($this->input->post('status')),
-            ];
-
-            $affected_rows = $this->blog_md->update($id,$request_data);
-
-            if($affected_rows > 0){
-                $this->session->set_flashdata('success_message','Məlumat uğurla dəyişdirildi');
-
-                redirect('backend/blog/edit/'.$id);
-            }
-
         }
+
 
         $item = $this->blog_md->selectDataById($id);
 
-        if(empty($item)){
-            $this->session->set_flashdata('error_message','Bu məlumat tapılmadı');
+        if (empty($item)) {
+            $this->session->set_flashdata('error_message', 'Bu məlumat tapılmadı');
 
             redirect('backend/blog');
         }
 
         $data['item'] = $item;
-        
-        $data['title'] = 'Blog Edit';
 
-        $this->load->admin('blog/edit',$data);
+        $data['title'] = 'Edit Blog ';
+
+        $this->load->admin('blog/edit', $data);
 
     }
+
     public function delete($id)
     {
         $delete = $this->blog_md->delete($id);

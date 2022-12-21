@@ -23,8 +23,8 @@
                             <label for="brand_id">Brand_id</label>
                             <br>
                             <select class="custom-select form-control" id="brand_id" name="brand_id">
-                                <?php foreach($brands as $row){ ?>
-                                <option value="<?php echo $row->id?>"> <?php echo $row->title;?></option>
+                                <?php foreach($brands as $row) { ?>
+                                <option value="<?= $row->id?>" <?= ($item->brand_id == $row->id) ? 'selected' : '' ?>> <?= $row->title; ?></option>
                                 <?php }?>
                             </select>
                         </div>

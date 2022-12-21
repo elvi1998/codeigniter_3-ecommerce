@@ -35,15 +35,18 @@ class brands extends CI_Controller {
             $config['max_width'] = 1024;
             $config['max_height'] = 768;
             $this->load->library('upload', $config);
+
             if (!$this->upload->do_upload('logo')) {
                 $error = array('error' => $this->upload->display_errors());
                 $this->load->admin('brands/create', $error);
             } else {
                 $data = array('upload_data' => $this->upload->data());
             }
-            if ($this->form_validation->run() == FALSE){
+
+            if ($this->form_validation->run() === FALSE){
                 $this->load->admin('brands/create');
             }
+
             $data_upload_files = $this->upload->data();
             $image = $data_upload_files['file_name'];
             $request_data = [
@@ -69,76 +72,87 @@ class brands extends CI_Controller {
 
     }
 
-    public function edit($id){
+    public function edit($id)
+    {
 
-        if($this->input->post()){
+        $unlink = 0;
+
+        if ($this->input->post()) {
             $id = $this->security->xss_clean($id);
 
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('title', 'Title', 'required');
-            $this->form_validation->set_rules('logo', 'logo', 'required');
 
-            $old_filename = $this->create()->image;
-            $new_filename = $_FILES['logo']['name'];
-            if($new_filename == TRUE)
-            {
-                $update_filename = time()."-".str_replace('','-', $new_filename);
-                $config['upload_path'] = 'uploads/';
-                $config['allowed_types'] = 'gif|jpg|png|jpeg';
-                $config['max_size'] = 6000;
-                $config['max_width'] = 1024;
-                $config['max_height'] = 768;
-                $config['file_name'] = $new_filename;
+            $this->form_validation->set_message('required', 'Boş keçilə bilməz');
 
-                $this->load->library('upload', $config);
+            if ($this->form_validation->run()) {
 
-                if ($this->upload->do_upload('logo')) {
-                    if (file_exists("./uploads/".$old_filename)) {
-                        unlink("./uploads/".$old_filename);
-                        $data = array('upload_data' => $this->upload->data());
+
+                $request_data = [
+                    'title' => $this->security->xss_clean($this->input->post('title')),
+                    'status' => $this->security->xss_clean($this->input->post('status'))
+                ];
+
+                if ($_FILES["logo"]["tmp_name"]) {
+
+                    $config['upload_path'] = 'uploads/';
+                    $config['allowed_types'] = 'gif|jpg|png';
+                    $config['overwrite'] = 'false';
+
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('logo')) {
+
+                        $error = array('error' => $this->upload->display_errors());
+                        $this->session->set_flashdata('error_message', $error);
+
+                    } else {
+
+                        $file_data = $this->upload->data();
+                        $request_data['logo'] = $file_data['file_name'];
+                        $unlink++;
                     }
                 }
-            } else {
-                $update_filename = $old_filename;
-                $data = array('upload_data' => $this->upload->data());
-            }
-            if ($this->form_validation->run() == FALSE){
-                $this->load->admin('brands/edit');
-            }
-            //$data_upload_files = $this->upload->data();
-            //$image = $data_upload_files['file_name'];
 
-            $request_data = [
-                'title' => $this->security->xss_clean($this->input->post('title')),
-                'logo' => $new_filename,
-                'status' =>$this->security->xss_clean($this->input->post('status')),
-            ];
 
-            $affected_rows = $this->brands_md->update($id, $request_data);
+                $img = $this->input->post('logo');
 
-            if($affected_rows > 0){
-                $this->session->set_flashdata('success_message','Məlumat uğurla dəyişdirildi');
+                $affected_rows = $this->brands_md->update($id, $request_data);
 
-                redirect('backend/brands');
+                if ($affected_rows > 0) {
+                    $this->session->set_flashdata('success_message', 'Məlumat uğurla dəyişdirildi');
+
+                    if ($unlink > 0 and file_exists($img)) {
+                        unlink($img);
+                    }
+
+                    redirect('backend/brands/edit/' . $id);
+                } else {
+                    $this->session->set_flashdata('error_message', 'Dəyişdirmə uğursuz oldu');
+                    redirect('backend/brands/edit/' . $id);
+                }
             }
         }
 
+
         $item = $this->brands_md->selectDataById($id);
 
-        if(empty($item)){
-            $this->session->set_flashdata('error_message','Bu məlumat tapılmadı');
+        if (empty($item)) {
+            $this->session->set_flashdata('error_message', 'Bu məlumat tapılmadı');
 
             redirect('backend/brands');
         }
 
         $data['item'] = $item;
 
-        $data['title'] = 'Brands Edit';
+        $data['title'] = 'Edit Brand ';
 
-        $this->load->admin('brands/edit',$data);
+        $this->load->admin('brands/edit', $data);
 
     }
+
     public function delete($id)
     {
         $delete = $this->brands_md->delete($id);

@@ -69,12 +69,12 @@ class Users extends CI_Controller {
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('name', 'Name', 'required');
-            $this->form_validation->set_rules('surnname', 'Surname', 'required');
+            $this->form_validation->set_rules('surname', 'Surname', 'required');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
             $this->form_validation->set_rules('phone', 'Phone', 'required');
 
-            if ($this->form_validation->run() == FALSE){
-                $this->load->admin('users/create');
+            if ($this->form_validation->run() === FALSE){
+                $this->load->admin('users/edit');
             }
 
             $request_data = [
@@ -93,6 +93,10 @@ class Users extends CI_Controller {
 
             if($affected_rows > 0){
                 $this->session->set_flashdata('success_message','Məlumat uğurla dəyişdirildi');
+
+                redirect('backend/users/edit/'.$id);
+            }else{
+                $this->session->set_flashdata('error_message','Xeta');
 
                 redirect('backend/users/edit/'.$id);
             }

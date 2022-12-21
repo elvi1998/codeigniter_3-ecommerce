@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title"> <?php echo $title; ?></h3>
+                    <h3 class="card-title"> Users Edit</h3>
                 </div>
                 <!-- /.card-header -->
                 <!-- form start -->
@@ -15,7 +15,7 @@
                             <?php echo form_error('name'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="name">Surname</label>
+                            <label for="surname">Surname</label>
                             <input type="text" name="surname" class="form-control" value="<?= $item->surname; ?>" placeholder="Enter Surname">
                             <?php echo form_error('surname'); ?>
                         </div>

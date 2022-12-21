@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="logo">Logo</label>
-                            <input type="file" name="logo" class="form-control" value="<?= $item->logo; ?> placeholder="Logo">
+                            <input type="file" name="logo" class="form-control" value="<?= $item->logo; ?>" placeholder="Logo">
                             <?php echo form_error('logo'); ?>
                         </div>
                         <div class="form-group">

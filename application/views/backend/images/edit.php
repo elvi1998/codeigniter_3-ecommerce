@@ -14,7 +14,7 @@
                             <br>
                             <select class="custom-select form-control" id="product_id" name="product_id">
                                 <?php foreach($products as $row){ ?>
-                                    <option value="<?php echo $row->id;?>"> <?php echo $row->title; ?></option>
+                                    <option value="<?= $row->id?>" <?= ($item->product_id == $row->id) ? 'selected' : '' ?>> <?= $row->title; ?></option>
                                 <?php }?>
                             </select>
                         </div>

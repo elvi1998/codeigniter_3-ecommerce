@@ -32,7 +32,7 @@ class Products extends CI_Controller {
             $this->form_validation->set_rules('price', 'Price', 'required');
             $this->form_validation->set_rules('sales_prices', 'Sales_prices', 'required');
             if ($this->form_validation->run() == FALSE){
-                $this->load->admin('products/create');
+                redirect('backend/products/create');;
             }
 
             $request_data = [
@@ -71,7 +71,7 @@ class Products extends CI_Controller {
 
             $this->form_validation->set_rules('title', 'Title', 'required');
             $this->form_validation->set_rules('description', 'Description', 'required');
-            $this->form_validation->set_rules('brand_id', 'Brand_id', 'required');
+            $this->form_validation->set_rules('brand_id', 'brand_id', 'required');
             $this->form_validation->set_rules('quantity', 'Quantity', 'required');
             $this->form_validation->set_rules('price', 'Price', 'required');
             $this->form_validation->set_rules('sales_prices', 'Sales_prices', 'required');

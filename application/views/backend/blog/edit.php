@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <label for="description">Description</label>
-                            <input type="description" name="title" class="form-control" value="<?= $item->description; ?>" placeholder="Enter Description">
+                            <input type="description" name="description" class="form-control" value="<?= $item->description; ?>" placeholder="Enter Description">
                             <?php echo form_error('description'); ?>
                         </div>
                         <div class="form-group">

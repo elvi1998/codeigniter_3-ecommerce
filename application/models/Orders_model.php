@@ -7,10 +7,13 @@ class Orders_model extends CI_Model {
     public $total_amount;
     public $status;
     public $payment_json;
+    public $status_id;
     protected $table = 'orders';
     protected $table1 = 'users';
     protected $table2 = 'payment_methods';
     protected $table3 = 'delivery_methods';
+    protected $table4 = 'order_status';
+
 
     public function insert($data){
 
@@ -33,9 +36,13 @@ class Orders_model extends CI_Model {
 
         return $query->result();
     }
+    public function getActiveOrder_status(){
+        $query = $this->db->get($this->table4);
+
+        return $query->result();
+    }
 
     public function select_all(){
-        $this->db->where('status',1);
         $query = $this->db->get($this->table);
 
         return $query->result();

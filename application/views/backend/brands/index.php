@@ -32,7 +32,7 @@
                                     <?php foreach($lists as $item) : ?>
                                         <tr>
                                             <td><?= $item->title; ?></td>
-                                            <td><img width="300" height="300" src="<?= base_url().'uploads/'.$item->logo; ?>"</td>
+                                            <td><img width="100" height="100" src="<?= base_url().'uploads/'.$item->logo; ?>"</td>
                                             <td><?= $item->status; ?></td>
                                             <td style="display:flex;column-gap:5px;">
                                             <a href="<?= base_url('backend/brands/edit/'.$item->id); ?>" title="Edit"

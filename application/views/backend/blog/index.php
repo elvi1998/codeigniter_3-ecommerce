@@ -36,7 +36,7 @@
                                         <tr>
                                             <td><?= $item->title; ?></td>
                                             <td><?= $item->description; ?></td>
-                                            <td><img width="300" height="300" src="<?= base_url().'uploads/'.$item->image; ?>"</td>
+                                            <td><img width="100" height="100" src="<?= base_url().'uploads/'.$item->image; ?>"</td>
                                             <td><?= $item->content; ?></td>
                                             <td><?= $item->created_at; ?></td>
                                             <td><?= $item->status; ?></td>

@@ -47,11 +47,12 @@
                             <?php echo form_error('payment_json'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="Status">Status</label>
+                            <label for="delivery_methods">Status ID</label>
                             <br>
-                            <select class="custom-select form-control" id="Status" name="status">
-                                <option value="0">Non-Active</option>
-                                <option value="1">Active</option>
+                            <select class="custom-select form-control" id="status_id" name="status_id">
+                                <?php foreach($order_status as $row){ ?>
+                                    <option value="<?php echo $row->id;?>"> <?php echo $row->title; ?></option>
+                                <?php }?>
                             </select>
                         </div>
                     </div>

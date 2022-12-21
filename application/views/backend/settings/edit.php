@@ -20,9 +20,9 @@
                             <?php echo form_error('value'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="Status">Status</label>
+                            <label for="status">Status</label>
                             <br>
-                            <select class="custom-select form-control" id="Status" name="status">
+                            <select class="custom-select form-control" id="status" name="status">
                                 <option value="0" <?php echo  ($item->status == 0) ? 'selected' : ''  ?>>Non-Active</option>
                                 <option value="1" <?php echo ($item->status == 1) ? 'selected' : ''  ?>>Active</option>
                             </select>

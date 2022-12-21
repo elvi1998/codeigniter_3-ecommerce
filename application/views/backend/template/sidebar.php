@@ -97,22 +97,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?= base_url('backend/product_images'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-list-ul"></i>
-                        <p>
-                            Product Images
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('backend/product_categories'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-list-ul"></i>
-                        <p>
-                            Product Categories
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="<?= base_url('backend/payment_methods'); ?>" class="nav-link">
                         <i class="nav-icon fas fa-list-ul"></i>
                         <p>
@@ -141,14 +125,6 @@
                         <i class="nav-icon fas fa-list-ul"></i>
                         <p>
                             Order Status
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="<?= base_url('backend/order_products'); ?>" class="nav-link">
-                        <i class="nav-icon fas fa-list-ul"></i>
-                        <p>
-                            Order Products
                         </p>
                     </a>
                 </li>

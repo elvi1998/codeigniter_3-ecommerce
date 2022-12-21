@@ -37,7 +37,7 @@ class Migration_Add_orders extends CI_Migration {
             ),
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp',
-            'status' => array(
+            'status_id' => array(
                 'type' => 'TINYINT',
                 'constraint' => 3,
                 'default'=>1,

@@ -40,7 +40,7 @@ class Orders extends CI_Controller {
                 'delivery_method' => $this->security->xss_clean($this->input->post('delivery_method')),
                 'total_amount' => $this->security->xss_clean($this->input->post('total_amount')),
                 'payment_json' => $this->security->xss_clean($this->input->post('payment_json')),
-                'status' => $this->security->xss_clean($this->input->post('status')),
+                'status_id' => $this->security->xss_clean($this->input->post('status_id')),
             ];
 
             $insert_id = $this->orders_md->insert($request_data);
@@ -57,7 +57,7 @@ class Orders extends CI_Controller {
         $data['users'] = $this->orders_md->getActiveUsers();
         $data['payment_methods'] = $this->orders_md->getActivePayment_methods();
         $data['delivery_methods'] = $this->orders_md->getActiveDelivery_methods();
-
+        $data['order_status'] = $this->orders_md->getActiveOrder_status();
 
         $this->load->admin('orders/create',$data);
 
@@ -77,7 +77,7 @@ class Orders extends CI_Controller {
             $this->form_validation->set_rules('payment_json', 'payment_json', 'required');
 
             if ($this->form_validation->run() == FALSE){
-                $this->load->admin('orders/create');
+                redirect('backend/orders/edit/'.$id);
             }
 
             $request_data = [
@@ -86,7 +86,7 @@ class Orders extends CI_Controller {
                 'delivery_method' => $this->security->xss_clean($this->input->post('delivery_method')),
                 'total_amount' => $this->security->xss_clean($this->input->post('total_amount')),
                 'payment_json' => $this->security->xss_clean($this->input->post('payment_json')),
-                'status' => $this->security->xss_clean($this->input->post('status')),
+                'status_id' => $this->security->xss_clean($this->input->post('status_id')),
             ];
 
 
@@ -114,6 +114,7 @@ class Orders extends CI_Controller {
         $data['users'] = $this->orders_md->getActiveUsers();
         $data['payment_methods'] = $this->orders_md->getActivePayment_methods();
         $data['delivery_methods'] = $this->orders_md->getActiveDelivery_methods();
+        $data['order_status'] = $this->orders_md->getActiveOrder_status();
         $this->load->admin('orders/edit',$data);
 
     }
