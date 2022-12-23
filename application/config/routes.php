@@ -53,8 +53,10 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['backend/login'] = 'backend/Login';
+$route['backend/logout'] = 'backend/Login';
 
-$route['backend'] = 'backend/Dashboard/index';
+$route['backend/dashboard'] = 'backend/Dashboard';
 
 
 $route['backend/admins'] = 'backend/Admins/index';
@@ -121,3 +123,8 @@ $route['backend/pages'] = 'backend/Pages/index';
 $route['backend/pages/create'] = 'backend/Pages/create';
 $route['backend/pages/edit/(:num)'] = 'backend/Pages/edit/$1';
 $route['backend/pages/delete/(:num)'] = 'backend/Pages/delete/$1';
+
+$route['backend/website_logo'] = 'backend/website_logo/index';
+$route['backend/website_logo/create'] = 'backend/website_logo/create';
+$route['backend/website_logo/edit/(:num)'] = 'backend/website_logo/edit/$1';
+$route['backend/website_logo/delete/(:num)'] = 'backend/website_logo/delete/$1';

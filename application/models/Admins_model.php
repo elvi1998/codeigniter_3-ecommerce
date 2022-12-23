@@ -39,6 +39,13 @@ class Admins_model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update($this->table, $data);
     }
+    public function loggedin($email, $password)
+    {
+        $this->db->where('email', $email);
+        $this->db->where('password', $password);
+        $query = $this->db->get($this->table);
+        return $query->row();
+    }
     public function delete($id)
     {
         if($this->db->delete('admins', array('id' => $id))){

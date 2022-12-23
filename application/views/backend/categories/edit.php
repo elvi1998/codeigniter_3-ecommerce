@@ -15,9 +15,22 @@
                             <?php echo form_error('title'); ?>
                         </div>
                         <div class="form-group">
-                            <label for="parent_id">Parent_id</label>
-                            <input type="number" name="parent_id" class="form-control" value="<?= $item->parent_id; ?>" placeholder="Enter parent_id">
-                            <?php echo form_error('parent_id'); ?>
+                            <label for="parent_id">Parent</label>
+                            <br>
+                            <select class="custom-select form-control" id="parent_id" name="parent_id">
+                                <option value="0">Main Category</option>
+                                <?php foreach ($categories as $category) :
+                                    $selected = '';
+                                    if ($item->parent_id == $category->id) {
+                                        $selected = 'selected';
+                                    } ?>
+                                    <option value="<?= $category->id; ?>" <?= $selected ?>><?= $category->title; ?></option>
+                                <?php
+
+                                endforeach;
+                                ?>
+
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="Status">Status</label>

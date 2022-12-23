@@ -20,6 +20,14 @@ class Settings_model extends CI_Model {
 
         return $query->result();
     }
+    public function select_data($_key)
+    {
+        $this->db->select('value');
+        $this->db->where('status', 1);
+        $this->db->where('_key', $_key);
+        $query = $this->db->get($this->table);
+        return $query->row('_key');
+    }
 
     public function selectDataById($id){
         $this->db->where('id',$id);

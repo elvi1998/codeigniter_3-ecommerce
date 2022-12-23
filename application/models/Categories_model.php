@@ -1,8 +1,8 @@
 <?php
 
 class Categories_model extends CI_Model {
-    public $title_c;
-    public $is_menu;
+    public $title;
+    public $parent_id;
     public $status;
 
     protected $table = 'categories';

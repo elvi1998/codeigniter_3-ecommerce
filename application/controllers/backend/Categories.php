@@ -50,7 +50,7 @@ class Categories extends CI_Controller {
         }
 
         $data['title'] = 'Categories List';
-
+        $data['categories'] = $this->categories_md->select_all();
         $this->load->admin('categories/create',$data);
 
     }
@@ -97,7 +97,8 @@ class Categories extends CI_Controller {
         $data['item'] = $item;
         
         $data['title'] = 'Categories Edit';
-
+        $categories = new Categories_model();
+        $data['categories'] = $categories->select_all();
         $this->load->admin('categories/edit',$data);
 
     }
