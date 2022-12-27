@@ -58,8 +58,6 @@ class Login extends CI_Controller
     {
         $this->session->unset_userdata('admin');
         $this->session->unset_userdata('loggedin');
-        print_r($_SESSION);
-        exit();
 
         redirect('backend/login');
     }
