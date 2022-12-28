@@ -40,9 +40,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="loadeding"></div>
 
-                        </div>
                     </div>
                 </div>
             </div>

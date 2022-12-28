@@ -243,11 +243,7 @@
 <link rel='stylesheet' property='stylesheet'  href='css/themecss/cpanel.css' type='text/css' media='all' />
 
 <!-- Preloading Screen -->
-<div id="loader-wrapper">
-    <div id="loader"></div>
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
-</div>
+
 <!-- End Preloading Screen -->
 
 <!-- Include Libs & Plugins

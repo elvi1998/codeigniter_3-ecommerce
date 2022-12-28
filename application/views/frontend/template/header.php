@@ -16,7 +16,7 @@
 
     <!-- Favicon
     ============================================ -->
-    <link rel="shortcut icon" href="ico/favicon.png">
+    <link rel="shortcut icon" href="<?= base_url(); ?>assets/frontend/ico/favicon.png">
 
     <!-- Google web fonts
     ============================================ -->
@@ -24,22 +24,22 @@
 
     <!-- Libs CSS
 	============================================ -->
-    <link rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
-    <link href="js/owl-carousel/owl.carousel.css" rel="stylesheet">
-    <link href="css/themecss/lib.css" rel="stylesheet">
-    <link href="js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url(); ?>assets/frontend/css/bootstrap/css/bootstrap.min.css">
+    <link href="<?= base_url(); ?>assets/frontend/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/js/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/lib.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 
     <!-- Theme CSS
     ============================================ -->
-    <link href="css/themecss/so_megamenu.css" rel="stylesheet">
-    <link href="css/themecss/so-categories.css" rel="stylesheet">
-    <link href="css/themecss/so-listing-tabs.css" rel="stylesheet">
-    <link href="css/themecss/animate.css" rel="stylesheet">
-    <link href="css/themecss/so-super-category.css" rel="stylesheet">
-    <link id="color_scheme" href="css/theme.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/so_megamenu.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/so-categories.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/so-listing-tabs.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/animate.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/themecss/so-super-category.css" rel="stylesheet">
+    <link id="color_scheme" href="<?= base_url(); ?>assets/frontend/css/theme.css" rel="stylesheet">
+    <link href="<?= base_url(); ?>assets/frontend/css/responsive.css" rel="stylesheet">
 
 
 </head>
@@ -116,7 +116,7 @@
                 <div class="row">
                     <!-- LOGO -->
                     <div class="navbar-logo col-md-3 col-sm-4 col-xs-10">
-                        <a href="index.html"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+                        <a href="index.html"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?= base_url(); ?>assets/frontend/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
                     </div>
                     <div class="header-center-right col-md-9 col-sm-8 col-xs-2">
                         <div class="responsive so-megamenu  megamenu-style-dev">
@@ -381,16 +381,16 @@
                                                                     <div class="col-sm-12">
                                                                         <div class="row">
                                                                             <div class="col-md-3 img img1">
-                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="image/demo/cms/img1.jpg" alt="banner1"></a>
+                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?= base_url(); ?>assets/frontend/image/demo/cms/img1.jpg" alt="banner1"></a>
                                                                             </div>
                                                                             <div class="col-md-3 img img2">
-                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="image/demo/cms/img2.jpg" alt="banner2"></a>
+                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?= base_url(); ?>assets/frontend/image/demo/cms/img2.jpg" alt="banner2"></a>
                                                                             </div>
                                                                             <div class="col-md-3 img img3">
-                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="image/demo/cms/img3.jpg" alt="banner3"></a>
+                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?= base_url(); ?>assets/frontend/image/demo/cms/img3.jpg" alt="banner3"></a>
                                                                             </div>
                                                                             <div class="col-md-3 img img4">
-                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="image/demo/cms/img4.jpg" alt="banner4"></a>
+                                                                                <a href="#"><img class="lazyload" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="<?= base_url(); ?>assets/frontend/image/demo/cms/img4.jpg" alt="banner4"></a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
